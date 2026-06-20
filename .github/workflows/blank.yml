@@ -28,8 +28,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add text.txt
-          git commit -m "Update text.txt from sources" || echo "No changes to commit"
+          git add source.txt
+          git commit -m "Update source.txt from sources" || echo "No changes to commit"
           git push
 
 
