@@ -1,0 +1,37 @@
+name: Copy remote file
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  copy_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout your repository
+        uses: actions/checkout@v4
+
+      - name: Download and merge remote files
+        run: |
+          # Clear any previous content
+          > source.txt
+
+          # First link
+          curl -L "https://raw.githubusercontent.com/SoliSpirit/v2ray-configs/refs/heads/main/all_configs.txt" >> text.txt
+          
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add text.txt
+          git commit -m "Update text.txt from sources" || echo "No changes to commit"
+          git push
+
+
+          
+         
