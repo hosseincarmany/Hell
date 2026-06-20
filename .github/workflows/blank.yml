@@ -22,7 +22,7 @@ jobs:
           > source.txt
 
           # First link
-          curl -L "https://raw.githubusercontent.com/SoliSpirit/v2ray-configs/refs/heads/main/all_configs.txt" >> text.txt
+          curl -L "https://raw.githubusercontent.com/SoliSpirit/v2ray-configs/refs/heads/main/all_configs.txt" >> source.txt
           
       - name: Commit and push changes
         run: |
