@@ -1,0 +1,21 @@
+name: Update v2ray-mobile text
+
+on:
+  push:
+    paths:
+      - "working.txt"
+
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger destination repo
+        run: |
+          curl -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.V2RAY_TOKEN }}" \
+          https://api.github.com/repos/hosseincarmany/v2ray-mobile/dispatches \
+          -d '{"event_type":"update_text"}'
